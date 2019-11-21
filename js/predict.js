@@ -1,10 +1,10 @@
 eruda.init();
-// let modelname = './sign_language_vgg16/';
-// let size_x = 100;
-// let size_y = 100;
-let modelname = './mobnet2-flowers/';
-let size_x = 224;
-let size_y = 224;
+let modelname = './sign_language_vgg16/';
+let size_x = 100;
+let size_y = 100;
+// let modelname = './mobnet2-flowers/';
+// let size_x = 224;
+// let size_y = 224;
 
 //let CLASSES = {0:'zero', 1:'one', 2:'two', 3:'three', 4:'four',5:'five', 6:'six', 7:'seven', 8:'eight', 9:'nine'}
 
