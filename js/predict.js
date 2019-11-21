@@ -56,6 +56,15 @@ $("#start-button2").click(function(){
 	startWebcam();
 });
 
+$("#start-button3").click(function(){
+	modelname = './mobnet2-catdog/';
+	size_x = 100;//224;
+	size_y = 100;//224;
+	loadModel();
+	loadDict();
+	startWebcam();
+});
+
 //-----------------------
 // load model
 //-----------------------
