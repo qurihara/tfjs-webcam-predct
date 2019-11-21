@@ -1,4 +1,36 @@
-const CLASSES = {0:'zero', 1:'one', 2:'two', 3:'three', 4:'four',5:'five', 6:'six', 7:'seven', 8:'eight', 9:'nine'}
+let modelname = './sign_language_vgg16/';
+//let CLASSES = {0:'zero', 1:'one', 2:'two', 3:'three', 4:'four',5:'five', 6:'six', 7:'seven', 8:'eight', 9:'nine'}
+
+var classNames = [];
+/*
+load the class names
+*/
+async function loadDict() {
+    loc = modelname + 'class_names.txt'
+    await $.ajax({
+        url: loc,
+        dataType: 'text',
+    }).done(success);
+}
+/*
+load the class names
+*/
+function success(data) {
+    const lst = data.split(/\n/)
+    for (var i = 0; i < lst.length - 1; i++) {
+        let symbol = lst[i]
+        classNames[i] = symbol
+    }
+}
+
+// const names = getClassNames(indices);
+// function getClassNames(indices) {
+//     var outp = []
+//     for (var i = 0; i < indices.length; i++)
+//         outp[i] = classNames[indices[i]]
+//     return outp
+// }
+
 
 //-----------------------
 // start button event
@@ -13,14 +45,14 @@ $("#start-button").click(function(){
 // load model
 //-----------------------
 
-let modelname = './sign_language_vgg16/model.json';
+let modelfile = modelname + 'model.json';
 let model;
 async function loadModel() {
 	console.log("model loading..");
 	$("#console").html(`<li>model loading...</li>`);
-	model=await tf.loadModel(modelname);
+	model=await tf.loadModel(modelfile);
 	console.log("model loaded.");
-	$("#console").html('<li>' + modelname + ' loaded.</li>`);
+	$("#console").html('<li>' + modelname + ' loaded.</li>');
 };
 
 //-----------------------
@@ -72,7 +104,7 @@ async function predict(){
 				.map(function(p,i){
 	return {
 		probability: p,
-		className: CLASSES[i]
+		className: classNames[i]
 	};
 	}).sort(function(a,b){
 		return b.probability-a.probability;
