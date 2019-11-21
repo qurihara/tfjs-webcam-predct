@@ -59,7 +59,8 @@ let model;
 async function loadModel() {
 	console.log("model loading..");
 	$("#console").html(`<li>model loading...</li>`);
-	model=await tf.loadModel(modelfile);
+	// model=await tf.loadModel(modelfile);
+	model=await tf.loadLayersModel(modelfile);
 	console.log("model loaded.");
 	$("#console").html('<li>' + modelname + ' loaded.</li>');
 };
