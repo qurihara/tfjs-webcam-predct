@@ -49,8 +49,8 @@ $("#start-button").click(function(){
 
 $("#start-button2").click(function(){
 	modelname = './mobnet2-flowers/';
-	size_x = 100;//224;
-	size_y = 100;//224;
+	size_x = 224;
+	size_y = 224;
 	loadModel();
 	loadDict();
 	startWebcam();
@@ -58,8 +58,8 @@ $("#start-button2").click(function(){
 
 $("#start-button3").click(function(){
 	modelname = './mobnet2-catdog/';
-	size_x = 100;//224;
-	size_y = 100;//224;
+	size_x = 224;
+	size_y = 224;
 	loadModel();
 	loadDict();
 	startWebcam();
@@ -69,9 +69,10 @@ $("#start-button3").click(function(){
 // load model
 //-----------------------
 
-let modelfile = modelname + 'model.json';
+
 let model;
 async function loadModel() {
+  let modelfile = modelname + 'model.json';
 	console.log("model loading..");
 	$("#console").html(`<li>model loading...</li>`);
 	// model=await tf.loadModel(modelfile);
@@ -181,7 +182,7 @@ async function predict(){
 	}).sort(function(a,b){
 		return b.probability-a.probability;
 	}).slice(0,classNames.length);//5);
-  
+
 	$("#console").empty();
 
 	results.forEach(function(p){
