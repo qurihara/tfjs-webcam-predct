@@ -17,13 +17,13 @@ let model;
 async function loadModel() {
 	console.log("model loading..");
 	$("#console").html(`<li>model loading...</li>`);
-	model=await tf.loadModel(`http://localhost:8080/sign_language_vgg16/model.json`);
+	model=await tf.loadModel(`./sign_language_vgg16/model.json`);
 	console.log("model loaded.");
 	$("#console").html(`<li>VGG16 pre trained model loaded.</li>`);
 };
 
 //-----------------------
-// start webcam 
+// start webcam
 //-----------------------
 
 var video;
@@ -87,7 +87,7 @@ async function predict(){
 };
 
 //------------------------------
-// capture streaming video 
+// capture streaming video
 // to a canvas object
 //------------------------------
 
@@ -109,7 +109,7 @@ function captureWebcam() {
 //-----------------------
 
 function preprocessImage(image){
-	let tensor = tf.fromPixels(image).resizeNearestNeighbor([100,100]).toFloat();	
+	let tensor = tf.fromPixels(image).resizeNearestNeighbor([100,100]).toFloat();
 	let offset = tf.scalar(255);
     return tensor.div(offset).expandDims();
 }
