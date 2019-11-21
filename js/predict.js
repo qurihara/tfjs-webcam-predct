@@ -13,13 +13,14 @@ $("#start-button").click(function(){
 // load model
 //-----------------------
 
+let modelname = './sign_language_vgg16/model.json';
 let model;
 async function loadModel() {
 	console.log("model loading..");
 	$("#console").html(`<li>model loading...</li>`);
-	model=await tf.loadModel(`./sign_language_vgg16/model.json`);
+	model=await tf.loadModel(modelname);
 	console.log("model loaded.");
-	$("#console").html(`<li>VGG16 pre trained model loaded.</li>`);
+	$("#console").html('<li>' + modelname + ' loaded.</li>`);
 };
 
 //-----------------------
