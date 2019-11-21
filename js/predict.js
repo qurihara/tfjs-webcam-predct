@@ -2,12 +2,6 @@ eruda.init();
 var modelname = './sign_language_vgg16/';
 var size_x = 100;
 var size_y = 100;
-// let modelname = './mobnet2-flowers/';
-// let size_x = 224;
-// let size_y = 224;
-
-console.log(modelname);
-//let CLASSES = {0:'zero', 1:'one', 2:'two', 3:'three', 4:'four',5:'five', 6:'six', 7:'seven', 8:'eight', 9:'nine'}
 
 var classNames = [];
 /*
@@ -55,8 +49,8 @@ $("#start-button").click(function(){
 
 $("#start-button2").click(function(){
 	modelname = './mobnet2-flowers/';
-	size_x = 224;
-	size_y = 224;
+	size_x = 100;//224;
+	size_y = 100;//224;
 	loadModel();
 	loadDict();
 	startWebcam();
