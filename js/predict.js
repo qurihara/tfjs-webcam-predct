@@ -180,8 +180,8 @@ async function predict(){
 	};
 	}).sort(function(a,b){
 		return b.probability-a.probability;
-	}).slice(0,5);
-
+	}).slice(0,classNames.length);//5);
+  
 	$("#console").empty();
 
 	results.forEach(function(p){
