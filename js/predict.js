@@ -86,7 +86,7 @@ function startWebcam() {
 	if (navigator.mediaDevices === undefined) {
 		navigator.mediaDevices = {};
 	}
-	
+
 	// Some browsers partially implement mediaDevices. We can't just assign an object
 	// with getUserMedia as it would overwrite existing properties.
 	// Here, we will just add the getUserMedia property if it's missing.
@@ -151,7 +151,7 @@ function startWebcam() {
 //-----------------------
 
 $("#predict-button").click(function(){
-	setInterval(predict, 1000/10);
+	setInterval(predict, 1000);
 });
 
 //-----------------------
