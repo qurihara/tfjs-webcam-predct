@@ -45,6 +45,7 @@ $("#start-button").click(function(){
 	loadModel(tf.loadLayersModel);
 	loadDict();
 	startWebcam();
+  setInterval(predict, 1000);
 });
 
 $("#start-button2").click(function(){
@@ -54,6 +55,7 @@ $("#start-button2").click(function(){
 	loadModel(tf.loadGraphModel);
 	loadDict();
 	startWebcam();
+  setInterval(predict, 1000);
 });
 
 $("#start-button3").click(function(){
@@ -63,6 +65,7 @@ $("#start-button3").click(function(){
 	loadModel(tf.loadGraphModel);
 	loadDict();
 	startWebcam();
+  setInterval(predict, 1000);
 });
 
 //-----------------------
@@ -156,14 +159,6 @@ function startWebcam() {
 	// 	alert("Something wrong with webcam!");
 	// });
 }
-
-//-----------------------
-// predict button event
-//-----------------------
-
-$("#predict-button").click(function(){
-	setInterval(predict, 1000);
-});
 
 //-----------------------
 // TensorFlow.js method
