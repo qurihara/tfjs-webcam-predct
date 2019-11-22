@@ -39,28 +39,28 @@ function success(data) {
 //-----------------------
 
 $("#start-button").click(function(){
-	modelname = './sign_language_vgg16/';
+	modelname = 'https://qurihara.github.io/tfjs-webcam-predct/sign_language_vgg16/';
 	size_x = 100;
 	size_y = 100;
-	loadModel();
+	loadModel(tf.loadLayersModel);
 	loadDict();
 	startWebcam();
 });
 
 $("#start-button2").click(function(){
-	modelname = './mobnet2-flowers/';
+	modelname = 'https://qurihara.github.io/tfjs-webcam-predct/mobnet2-flowers/';
 	size_x = 224;
 	size_y = 224;
-	loadModel();
+	loadModel(tf.loadGraphModel);
 	loadDict();
 	startWebcam();
 });
 
 $("#start-button3").click(function(){
-	modelname = './mobnet2-catdog/';
+	modelname = 'https://qurihara.github.io/tfjs-webcam-predct/mobnet2-catdog/';
 	size_x = 224;
 	size_y = 224;
-	loadModel();
+	loadModel(tf.loadGraphModel);
 	loadDict();
 	startWebcam();
 });
@@ -69,14 +69,15 @@ $("#start-button3").click(function(){
 // load model
 //-----------------------
 
-
 let model;
-async function loadModel() {
-  let modelfile = modelname + 'model.json';
-	console.log("model loading..");
+async function loadModel(loadf) {
+    let modelfile = modelname + 'model.json';
+	console.log("model loading.. : " + modelfile);
 	$("#console").html(`<li>model loading...</li>`);
 	// model=await tf.loadModel(modelfile);
-	model=await tf.loadLayersModel(modelfile);
+// 	model=await tf.loadLayersModel(modelfile);
+// 	model=await tf.loadGraphModel(modelfile);
+	model=await loadf(modelfile);
 	console.log("model loaded.");
 	$("#console").html('<li>' + modelname + ' loaded.</li>');
 };
